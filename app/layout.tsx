@@ -1,6 +1,7 @@
 import { Quicksand } from 'next/font/google';
 import './ui/globals.css';
 import Header from './ui/headers';
+import { Suspense } from 'react';
 
 const quicksand = Quicksand({
 	subsets: ['latin'],
@@ -11,7 +12,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 	return (
 		<html lang="en">
 			<body className={`${quicksand.className} antialiased`}>
-				<Header />
+				<Suspense fallback={<div />}>
+					<Header />
+				</Suspense>
 				{children}
 			</body>
 		</html>
