@@ -2,7 +2,12 @@ import { selectProducts } from './lib/actions';
 
 export default async function Home() {
 	const products = await selectProducts();
-	console.log(products);
 
-	return <h1>Hello World</h1>;
+	return (
+		<>
+			{products.map((product) => (
+				<p key={product.id}>{product.name}</p>
+			))}
+		</>
+	);
 }
